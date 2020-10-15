@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -12,9 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.uc.katalog_film.R;
 import com.uc.katalog_film.model.Movie;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +34,7 @@ public class MovieFragment extends Fragment {
     @BindView(R.id.button_movie)
     Button button;
 
+    private MovieViewModel viewModel;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,10 +86,21 @@ public class MovieFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        viewModel = ViewModelProviders.of(requireActivity()).get(MovieViewModel.class);
+        viewModel.getMovieCollection().observe(requireActivity(), observeViewModel);
+
         Movie movie = new Movie();
         button.setOnClickListener(view1 -> {
             NavDirections action = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie);
             Navigation.findNavController(view1).navigate(action);
         });
     }
+
+    private Observer<List<Movie>> observeViewModel = movies -> {
+        if (movies != null){
+            Movie movie = movies.get(0);
+            Toast.makeText(getContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
+        }
+    };
 }
