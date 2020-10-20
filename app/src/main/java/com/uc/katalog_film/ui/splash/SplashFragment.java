@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,9 @@ import butterknife.ButterKnife;
  * create an instance of this fragment.
  */
 public class SplashFragment extends Fragment {
+    private static int splashtime = 2000;
 
-    @BindView(R.id.button_splash)
+
     Button button;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,10 +81,14 @@ public class SplashFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        button.setOnClickListener(view1 -> {
+        new Handler().postDelayed(() -> {
             NavDirections action = SplashFragmentDirections.actionSplashFragmentToMovieFragment();
-            Navigation.findNavController(view1).navigate(action);
-        });
+            Navigation.findNavController(view).navigate(action);
+        }, splashtime);
+//        button.setOnClickListener(view1 -> {
+//            NavDirections action = SplashFragmentDirections.actionSplashFragmentToMovieFragment();
+//            Navigation.findNavController(view1).navigate(action);
+//        });
     }
 
     @Override

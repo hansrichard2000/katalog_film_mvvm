@@ -19,8 +19,9 @@
     <fragment
         android:id="@+id/nav_movie"
         android:name="com.uc.katalog_film.ui.main.movie.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" >
+        android:label="@string/movies"
+        android:icon="@drawable/ic_baseline_local_movies_24"
+        tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -38,6 +39,7 @@
         android:id="@+id/nav_tv"
         android:name="com.uc.katalog_film.ui.main.tvShow.TvShowFragment"
         android:label="@string/tv_shows"
+        android:icon="@drawable/ic_baseline_live_tv_24"
         tools:layout="@layout/fragment_tv_show" >
         <action
             android:id="@+id/action_tvShowFragment_to_detailFragment"

@@ -1,6 +1,7 @@
-package com.uc.katalog_film.model;
+package com.uc.katalog_film.model.response;
 
 import com.google.gson.annotations.SerializedName;
+import com.uc.katalog_film.model.Movie;
 
 import java.util.List;
 

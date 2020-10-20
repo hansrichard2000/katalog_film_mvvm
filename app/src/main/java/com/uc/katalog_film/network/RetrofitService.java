@@ -1,6 +1,6 @@
 package com.uc.katalog_film.network;
 
-import com.uc.katalog_film.model.MovieResponse;
+import com.uc.katalog_film.model.response.MovieResponse;
 import com.uc.katalog_film.util.Constants;
 
 import retrofit2.Call;

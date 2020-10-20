@@ -4,14 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.splash.SplashFragment">
+    android:background="@color/colorPrimary"
+    tools:context=".ui.splash.SplashFragment" >
 
-
-    <Button
-        android:id="@+id/button_splash"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To Movie"
+        android:background="@drawable/soft_edge"
+        android:fontFamily="@font/nova_round"
+        android:paddingStart="50dp"
+        android:paddingTop="40dp"
+        android:paddingEnd="50dp"
+        android:paddingBottom="40dp"
+        android:text="@string/hmdb"
+        android:textColor="@color/colorAccent"
+        android:textSize="72sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
