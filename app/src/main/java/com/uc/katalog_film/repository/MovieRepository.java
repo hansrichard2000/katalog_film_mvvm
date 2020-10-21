@@ -5,8 +5,13 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.uc.katalog_film.model.Movie;
+import com.uc.katalog_film.model.local.Cast;
+import com.uc.katalog_film.model.local.Genre;
+import com.uc.katalog_film.model.response.CastResponse;
+import com.uc.katalog_film.model.response.GenreResponse;
 import com.uc.katalog_film.model.response.MovieResponse;
 import com.uc.katalog_film.network.RetrofitService;
+import com.uc.katalog_film.util.Constants;
 
 import java.util.List;
 
@@ -50,5 +55,54 @@ public class MovieRepository {
         });
 
         return listMovie;
+    }
+
+    public MutableLiveData<List<Genre>> getGenres(int id){
+        MutableLiveData<List<Genre>> listGenres = new MutableLiveData<>();
+
+        service.getGenres(Constants.Type.MOVIES, id).enqueue(new Callback<GenreResponse>() {
+            @Override
+            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()){
+                    if (response.body() != null){
+                        Log.d(TAG, "onResponse: " + response.body().getGenres().size());
+                        listGenres.postValue(response.body().getGenres());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GenreResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listGenres;
+    }
+
+    public MutableLiveData<List<Cast>> getCasts(int id) {
+        MutableLiveData<List<Cast>> listCasts = new MutableLiveData<>();
+
+        service.getCasts(Constants.Type.MOVIES, id).enqueue(new Callback<CastResponse>() {
+            @Override
+            public void onResponse(Call<CastResponse> call, Response<CastResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: " + response.body().getCast().size());
+                        listCasts.postValue(response.body().getCast());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CastResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listCasts;
     }
 }

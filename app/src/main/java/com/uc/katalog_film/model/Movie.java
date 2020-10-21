@@ -7,6 +7,10 @@ import com.google.gson.annotations.SerializedName;
 import com.uc.katalog_film.util.Constants;
 
 public class Movie implements Parcelable {
+
+    @SerializedName("id")
+    private String id_movie;
+
     @SerializedName("popularity")
     private String popularity;
 
@@ -33,6 +37,7 @@ public class Movie implements Parcelable {
     }
 
     public Movie(String popularity, String poster, String cover, String title, String description, String releaseDate) {
+        this.id_movie = id_movie;
         this.popularity = popularity;
         this.poster = poster;
         this.cover = cover;
@@ -40,6 +45,14 @@ public class Movie implements Parcelable {
         this.description = description;
         this.releaseDate = releaseDate;
 //        this.genre = genre;
+    }
+
+    public String getId_movie() {
+        return id_movie;
+    }
+
+    public void setId_movie(String id_movie) {
+        this.id_movie = id_movie;
     }
 
     public String getPopularity() {
@@ -51,7 +64,7 @@ public class Movie implements Parcelable {
     }
 
     public String getPoster() {
-        return poster;
+        return Constants.BASE_IMAGE_URL + poster;
     }
 
     public void setPoster(String poster) {
@@ -59,7 +72,7 @@ public class Movie implements Parcelable {
     }
 
     public String getCover() {
-        return cover;
+        return Constants.BASE_IMAGE_URL + cover;
     }
 
     public void setCover(String cover) {
@@ -105,6 +118,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id_movie);
         dest.writeString(this.popularity);
         dest.writeString(this.poster);
         dest.writeString(this.title);
@@ -115,6 +129,7 @@ public class Movie implements Parcelable {
     }
 
     protected Movie(Parcel in) {
+        this.id_movie = in.readString();
         this.popularity = in.readString();
         this.poster = in.readString();
         this.title = in.readString();

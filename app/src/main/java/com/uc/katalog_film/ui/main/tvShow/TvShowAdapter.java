@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +16,7 @@ import com.uc.katalog_film.R;
 import com.uc.katalog_film.model.Movie;
 import com.uc.katalog_film.model.local.TvShow;
 import com.uc.katalog_film.ui.main.movie.MovieAdapter;
+import com.uc.katalog_film.ui.main.movie.MovieFragmentDirections;
 import com.uc.katalog_film.util.Constants;
 
 import java.util.List;
@@ -54,10 +56,14 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.CardViewVi
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         TvShow tvShow = tvShows.get(position);
-        Glide.with(context).load(Constants.BASE_IMAGE_URL + tvShow.getPoster()).centerCrop().into(holder.mvImage);
+        Glide.with(context).load(tvShow.getCover()).centerCrop().into(holder.mvImage);
         holder.title.setText(tvShow.getTitle());
         holder.popularity.setText(tvShow.getPopularity());
         holder.date.setText(tvShow.getReleaseDate());
+        holder.itemView.setOnClickListener(view -> {
+            TvShowFragmentDirections.ActionTvShowFragmentToDetailFragment action = TvShowFragmentDirections.actionTvShowFragmentToDetailFragment(null, tvShow);
+            Navigation.findNavController(view).navigate(action);
+        });
     }
 
     @Override

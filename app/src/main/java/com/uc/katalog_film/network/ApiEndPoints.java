@@ -17,14 +17,13 @@ public interface ApiEndPoints {
     @GET("discover/tv")
     Call<TvShowResponse> getTvShow(@Query("api_key") String apiKey);
 
-//    @GET("{type}/{id}")
-//    Call<GenreResponse> getGenres(@Path("type") String type, @Path("id") int id, @Query("api_key") String apiKay);
-//
-//    @GET("{type}/{id}/credits")
-//    Call<CastResponse> getCasts(@Path("type") String type, @Path("id") int id, @Query("api_key") String apiKey);
+    @GET("{type}/{id}")
+    Call<GenreResponse> getGenres(@Path("type") String type, @Path("id") int id, @Query("api_key") String apiKay);
 
+    @GET("{type}/{id}/credits")
+    Call<CastResponse> getCasts(@Path("type") String type, @Path("id") int id, @Query("api_key") String apiKey);
 
-//    @GET("movie/{movie_id}")
-//    Call<MovieResponse> getDetailMovie(@Path("movie_id")int movieId, @Query("api_key") String apiKey);
+    @GET("movie/{movie_id}")
+    Call<MovieResponse> getDetailMovie(@Path("movie_id")int movieId, @Query("api_key") String apiKey);
 
 }

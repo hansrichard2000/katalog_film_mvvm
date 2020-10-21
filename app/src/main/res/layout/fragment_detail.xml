@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -87,7 +86,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_mv_title" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/detail_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -113,15 +112,15 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/detail_genres"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
-                android:text="TextView"
+                android:text=" "
                 android:textColor="@color/colorBack"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +140,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_genres" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_cast"

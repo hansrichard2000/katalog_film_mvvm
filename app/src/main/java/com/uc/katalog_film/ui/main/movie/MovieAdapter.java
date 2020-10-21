@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -44,10 +45,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CardViewView
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         Movie movie = movies.get(position);
-        Glide.with(context).load(Constants.BASE_IMAGE_URL + movie.getPoster()).centerCrop().into(holder.mvImage);
+        Glide.with(context).load(movie.getCover()).centerCrop().into(holder.mvImage);
         holder.title.setText(movie.getTitle());
         holder.popularity.setText(movie.getPopularity());
         holder.date.setText(movie.getReleaseDate());
+        holder.itemView.setOnClickListener(view -> {
+            MovieFragmentDirections.ActionMovieFragmentToDetailFragment action = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie, null);
+            Navigation.findNavController(view).navigate(action);
+        });
     }
 
     @Override

@@ -4,8 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.uc.katalog_film.util.Constants;
 
 public class TvShow implements Parcelable {
+
+    @SerializedName("id")
+    private String id_show;
+
     @SerializedName("popularity")
     private String popularity;
 
@@ -29,6 +34,7 @@ public class TvShow implements Parcelable {
     }
 
     public TvShow(String popularity, String poster, String cover, String title, String description, String releaseDate) {
+        this.id_show = id_show;
         this.popularity = popularity;
         this.poster = poster;
         this.cover = cover;
@@ -38,6 +44,7 @@ public class TvShow implements Parcelable {
     }
 
     protected TvShow(Parcel in) {
+        id_show = in.readString();
         popularity = in.readString();
         poster = in.readString();
         cover = in.readString();
@@ -48,6 +55,7 @@ public class TvShow implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id_show);
         dest.writeString(popularity);
         dest.writeString(poster);
         dest.writeString(cover);
@@ -73,6 +81,14 @@ public class TvShow implements Parcelable {
         }
     };
 
+    public String getId_show() {
+        return id_show;
+    }
+
+    public void setId_show(String id_show) {
+        this.id_show = id_show;
+    }
+
     public String getPopularity() {
         return popularity;
     }
@@ -82,7 +98,7 @@ public class TvShow implements Parcelable {
     }
 
     public String getPoster() {
-        return poster;
+        return Constants.BASE_IMAGE_URL + poster;
     }
 
     public void setPoster(String poster) {
@@ -90,7 +106,7 @@ public class TvShow implements Parcelable {
     }
 
     public String getCover() {
-        return cover;
+        return Constants.BASE_IMAGE_URL + cover;
     }
 
     public void setCover(String cover) {
