@@ -5,12 +5,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.uc.katalog_film.R;
+import com.uc.katalog_film.model.local.TvShow;
+import com.uc.katalog_film.ui.main.movie.MovieAdapter;
+import com.uc.katalog_film.ui.main.movie.MovieViewModel;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +30,13 @@ import com.uc.katalog_film.R;
  * create an instance of this fragment.
  */
 public class TvShowFragment extends Fragment {
+
+    @BindView(R.id.rv_TvShow)
+    RecyclerView rv_tvshow;
+
+    TvShowAdapter tvShowAdapter;
+
+    private TvShowViewModel viewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,12 +81,27 @@ public class TvShowFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tv_show, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
+
+        tvShowAdapter = new TvShowAdapter(getContext());
+        rv_tvshow.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        viewModel = ViewModelProviders.of(requireActivity()).get(TvShowViewModel.class);
+        viewModel.getTvShowCollection().observe(requireActivity(), observeViewModel);
     }
+
+    private Observer<List<TvShow>> observeViewModel = tvShows -> {
+       if (tvShows != null){
+           tvShowAdapter.setTvShows(tvShows);
+           tvShowAdapter.notifyDataSetChanged();
+           rv_tvshow.setAdapter(tvShowAdapter);
+       }
+    };
 }

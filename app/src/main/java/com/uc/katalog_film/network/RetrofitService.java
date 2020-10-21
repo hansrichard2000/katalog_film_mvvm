@@ -1,6 +1,7 @@
 package com.uc.katalog_film.network;
 
 import com.uc.katalog_film.model.response.MovieResponse;
+import com.uc.katalog_film.model.response.TvShowResponse;
 import com.uc.katalog_film.util.Constants;
 
 import retrofit2.Call;
@@ -40,5 +41,9 @@ public class RetrofitService {
 
     public Call<MovieResponse> getMovies(){
         return api.getMovies(Constants.API_KEY);
+    }
+
+    public Call<TvShowResponse> getTvShow(){
+        return api.getTvShow(Constants.API_KEY);
     }
 }

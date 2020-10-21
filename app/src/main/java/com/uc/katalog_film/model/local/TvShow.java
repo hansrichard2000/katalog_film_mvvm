@@ -9,19 +9,19 @@ public class TvShow implements Parcelable {
     @SerializedName("popularity")
     private String popularity;
 
-    @SerializedName("poster")
+    @SerializedName("poster_path")
     private String poster;
 
-    @SerializedName("cover")
+    @SerializedName("backdrop_path")
     private String cover;
 
-    @SerializedName("title")
+    @SerializedName("name")
     private String title;
 
     @SerializedName("overview")
     private String description;
 
-    @SerializedName("releaseDate")
+    @SerializedName("first_air_date")
     private String releaseDate;
 
     public TvShow(){
