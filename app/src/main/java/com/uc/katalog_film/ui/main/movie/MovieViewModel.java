@@ -3,7 +3,7 @@ package com.uc.katalog_film.ui.main.movie;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.uc.katalog_film.model.Movie;
+import com.uc.katalog_film.model.local.Movie;
 import com.uc.katalog_film.repository.MovieRepository;
 
 import java.util.List;

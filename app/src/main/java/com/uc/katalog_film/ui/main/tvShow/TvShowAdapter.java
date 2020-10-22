@@ -13,11 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uc.katalog_film.R;
-import com.uc.katalog_film.model.Movie;
 import com.uc.katalog_film.model.local.TvShow;
-import com.uc.katalog_film.ui.main.movie.MovieAdapter;
-import com.uc.katalog_film.ui.main.movie.MovieFragmentDirections;
-import com.uc.katalog_film.util.Constants;
 
 import java.util.List;
 
@@ -60,6 +56,7 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.CardViewVi
         holder.title.setText(tvShow.getTitle());
         holder.popularity.setText(tvShow.getPopularity());
         holder.date.setText(tvShow.getReleaseDate());
+        holder.score.setText(tvShow.getScore());
         holder.itemView.setOnClickListener(view -> {
             TvShowFragmentDirections.ActionTvShowFragmentToDetailFragment action = TvShowFragmentDirections.actionTvShowFragmentToDetailFragment(null, tvShow);
             Navigation.findNavController(view).navigate(action);
@@ -74,13 +71,14 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.CardViewVi
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView mvImage;
-        TextView title, popularity, date;
+        TextView title, popularity, date, score;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             mvImage = itemView.findViewById(R.id.mv_picture);
             title = itemView.findViewById(R.id.mv_title);
             popularity = itemView.findViewById(R.id.mv_popularity);
             date = itemView.findViewById(R.id.mv_date);
+            score = itemView.findViewById(R.id.mv_score);
         }
     }
 }

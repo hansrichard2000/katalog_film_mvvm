@@ -14,9 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.uc.katalog_film.R;
-import com.uc.katalog_film.model.Movie;
+import com.uc.katalog_film.model.local.Movie;
 
 import java.util.List;
 
@@ -32,8 +33,10 @@ public class MovieFragment extends Fragment {
 
     Button button;
     MovieAdapter adapter;
+
     @BindView(R.id.rv_movie)
     RecyclerView rv_movie;
+
 
     private MovieViewModel viewModel;
     // TODO: Rename parameter arguments, choose names that match
@@ -87,7 +90,6 @@ public class MovieFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
         adapter = new MovieAdapter(getContext());
         rv_movie.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -101,6 +103,7 @@ public class MovieFragment extends Fragment {
 //            Navigation.findNavController(view1).navigate(action);
 //        });
     }
+
 
     private Observer<List<Movie>> observeViewModel = movies -> {
         if (movies != null){

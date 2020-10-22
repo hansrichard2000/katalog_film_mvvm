@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,17 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.uc.katalog_film.R;
-import com.uc.katalog_film.model.Movie;
-import com.uc.katalog_film.model.local.Cast;
+import com.uc.katalog_film.model.local.Movie;
 import com.uc.katalog_film.model.local.Genre;
 import com.uc.katalog_film.model.local.TvShow;
 import com.uc.katalog_film.ui.MainActivity;
 
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.uc.katalog_film.model.Movie;
+import com.uc.katalog_film.model.local.Movie;
 import com.uc.katalog_film.model.local.Cast;
 import com.uc.katalog_film.model.local.Genre;
 import com.uc.katalog_film.model.response.CastResponse;

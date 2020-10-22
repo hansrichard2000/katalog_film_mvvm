@@ -1,4 +1,4 @@
-package com.uc.katalog_film.model;
+package com.uc.katalog_film.model.local;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -29,6 +29,9 @@ public class Movie implements Parcelable {
     @SerializedName("release_date")
     private String releaseDate;
 
+    @SerializedName("vote_average")
+    private String score;
+
 //    @SerializedName("genre_ids")
 //    private String genre;
 
@@ -44,7 +47,7 @@ public class Movie implements Parcelable {
         this.title = title;
         this.description = description;
         this.releaseDate = releaseDate;
-//        this.genre = genre;
+        this.score = score;
     }
 
     public String getId_movie() {
@@ -103,13 +106,13 @@ public class Movie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-//    public String getGenre() {
-//        return genre;
-//    }
-//
-//    public void setGenre(String genre) {
-//        this.genre = genre;
-//    }
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     @Override
     public int describeContents() {
@@ -125,7 +128,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.cover);
         dest.writeString(this.description);
         dest.writeString(this.releaseDate);
-//        dest.writeString(this.genre);
+        dest.writeString(this.score);
     }
 
     protected Movie(Parcel in) {
@@ -136,7 +139,7 @@ public class Movie implements Parcelable {
         this.cover = in.readString();
         this.description = in.readString();
         this.releaseDate = in.readString();
-//        this.genre = in.readString();
+        this.score = in.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {

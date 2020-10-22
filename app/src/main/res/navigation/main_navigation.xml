@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="movie"
-            app:argType="com.uc.katalog_film.model.Movie"
+            app:argType="com.uc.katalog_film.model.local.Movie"
             app:nullable="true" />
         <argument
             android:name="tvShow"

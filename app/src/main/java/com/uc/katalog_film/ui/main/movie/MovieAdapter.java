@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.uc.katalog_film.R;
-import com.uc.katalog_film.model.Movie;
-import com.uc.katalog_film.util.Constants;
+import com.uc.katalog_film.model.local.Movie;
 
 import java.util.List;
 
@@ -49,6 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CardViewView
         holder.title.setText(movie.getTitle());
         holder.popularity.setText(movie.getPopularity());
         holder.date.setText(movie.getReleaseDate());
+        holder.score.setText(movie.getScore());
         holder.itemView.setOnClickListener(view -> {
             MovieFragmentDirections.ActionMovieFragmentToDetailFragment action = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie, null);
             Navigation.findNavController(view).navigate(action);
@@ -63,13 +63,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CardViewView
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView mvImage;
-        TextView title, popularity, date;
+        TextView title, popularity, date, score;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             mvImage = itemView.findViewById(R.id.mv_picture);
             title = itemView.findViewById(R.id.mv_title);
             popularity = itemView.findViewById(R.id.mv_popularity);
             date = itemView.findViewById(R.id.mv_date);
+            score = itemView.findViewById(R.id.mv_score);
         }
     }
 }

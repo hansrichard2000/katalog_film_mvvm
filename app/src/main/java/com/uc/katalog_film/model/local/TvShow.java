@@ -29,6 +29,9 @@ public class TvShow implements Parcelable {
     @SerializedName("first_air_date")
     private String releaseDate;
 
+    @SerializedName("vote_average")
+    private String score;
+
     public TvShow(){
 
     }
@@ -41,6 +44,7 @@ public class TvShow implements Parcelable {
         this.title = title;
         this.description = description;
         this.releaseDate = releaseDate;
+        this.score = score;
     }
 
     protected TvShow(Parcel in) {
@@ -51,6 +55,7 @@ public class TvShow implements Parcelable {
         title = in.readString();
         description = in.readString();
         releaseDate = in.readString();
+        score = in.readString();
     }
 
     @Override
@@ -62,6 +67,7 @@ public class TvShow implements Parcelable {
         dest.writeString(title);
         dest.writeString(description);
         dest.writeString(releaseDate);
+        dest.writeString(score);
     }
 
     @Override
@@ -135,5 +141,13 @@ public class TvShow implements Parcelable {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.uc.katalog_film.R;
 import com.uc.katalog_film.model.local.TvShow;
@@ -88,7 +89,6 @@ public class TvShowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
         tvShowAdapter = new TvShowAdapter(getContext());
         rv_tvshow.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -96,6 +96,7 @@ public class TvShowFragment extends Fragment {
         viewModel = ViewModelProviders.of(requireActivity()).get(TvShowViewModel.class);
         viewModel.getTvShowCollection().observe(requireActivity(), observeViewModel);
     }
+
 
     private Observer<List<TvShow>> observeViewModel = tvShows -> {
        if (tvShows != null){
