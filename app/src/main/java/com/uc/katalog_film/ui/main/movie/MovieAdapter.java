@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +50,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CardViewView
         holder.popularity.setText(movie.getPopularity());
         holder.date.setText(movie.getReleaseDate());
         holder.score.setText(movie.getScore());
-        holder.itemView.setOnClickListener(view -> {
-            MovieFragmentDirections.ActionMovieFragmentToDetailFragment action = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie, null);
-            Navigation.findNavController(view).navigate(action);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MovieFragmentDirections.ActionMovieFragmentToDetailFragment action = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie, null);
+                Navigation.findNavController(view).navigate((NavDirections) action);
+            }
         });
     }
 
